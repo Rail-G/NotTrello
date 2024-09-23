@@ -1,0 +1,175 @@
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+html {
+    font-size: 13px;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    background: #FC5C7D;
+    background: -webkit-linear-gradient(to right, #6A82FB, #FC5C7D);  
+    background: linear-gradient(to right, #6A82FB, #FC5C7D); 
+
+}
+
+.tasks-list {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 5px;
+}
+
+.task-list {
+    width: calc(33% - 5px);
+    padding: 5px;
+    border: 1px solid #000000;
+    border-radius: 3px;
+    background-color: #e6e6e6;
+}
+
+.list-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    padding: 5px;
+}
+
+.list-header-text {
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    color:rgb(36, 90, 251);
+    font-weight: 700;
+}
+
+.list-header-option {
+    background-image: url('../svg/more-svgrepo-com.svg');
+    background-color: #e6e6e6;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 12px;
+    height: 12px;
+    cursor: pointer;
+}
+
+.task {
+    font-size: 0.5rem;
+    padding: 5px;
+    margin-bottom: 5px;
+    border: 1px solid #000000;
+    border-radius: 3px;
+    background-color: #ffffff;
+    position: relative;
+}
+
+.task-tools {
+    display: flex;
+    flex-direction: row;
+}
+
+.task-tool {
+    display: flex;
+    align-items: flex-end;
+    margin-top: 5px;
+    margin-right: 2px;
+}
+
+.task-tool:last-child {
+    margin-right: 0;
+}
+
+.task-tool-img {
+    width: 0.7rem;
+    height: 0.7rem;
+    margin-right: 2px;
+    cursor: pointer;
+}
+
+.list-footer-text {
+    margin-top: 5px;
+    font-size: 0.7rem;
+    color:rgb(36, 90, 251);
+    font-weight: 400;
+    cursor: pointer;
+    display: block;
+}
+
+.add-new-card-block {
+    margin-top: 5px;
+}
+
+.new-card-text {
+    width: 100%;
+    padding: 5px;
+    font-size: 0.5rem;
+}
+
+.new-card-options {
+    display: flex;
+    margin-top: 5px;
+}
+
+.add-new-card-btn {
+    font-size: 0.6rem;
+    margin-right: 5px;
+    padding: 3px;
+    background-color: rgb(60, 219, 81);
+    border: 0;
+    border-radius: 3px;
+    font-weight: 700;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.cancel-new-card-btn {
+    font-size: 0.7rem;
+    align-self: center;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.new-card-error-text {
+    font-size: 0.6rem;
+    color: #ff0000;
+    vertical-align: middle;
+    font-weight: 700;
+}
+
+.new-card-error-text::before {
+    content: '•';
+    vertical-align: middle;
+    margin-right: 3px;
+}
+
+.empty-list {
+    width: 100%;
+    text-align: center;
+    font-size: 0.7rem;    
+}
+
+.delete-btn {
+    position: absolute;
+    font-size: 1rem;
+    top: 0;
+    right: 5px;
+    display: none;
+    cursor: pointer;
+}
+
+.active {
+    display: block;
+}
+
+.not-active {
+    display: none;
+}
