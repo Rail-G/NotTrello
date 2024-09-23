@@ -14,7 +14,7 @@ install:
 build: off
 
 build_script:
-  - yarn run prodBuild
+  - yarn run build
 
 test_script:
   - yarn run lint
