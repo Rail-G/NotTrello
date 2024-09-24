@@ -184,7 +184,13 @@ class NotTrello {
   }
   loadDataToLocalStorage() {
     if (localStorage.getItem('Info') == null) {
-      return;
+      document.querySelectorAll('.list-body').forEach(elem => {
+        elem.insertAdjacentHTML('beforeend', `
+                    <div class="empty-list">
+                        <span>No task...</span>
+                    </div>
+                    `);
+      });
     }
     const allTasks = document.querySelectorAll('.task-list');
     const data = JSON.parse(localStorage.getItem('Info'));
