@@ -1,7 +1,29 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
+/******/ 	// The require scope
+/******/ 	var __webpack_require__ = {};
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/publicPath */
+/******/ 	(() => {
+/******/ 		__webpack_require__.p = "";
+/******/ 	})();
+/******/ 	
+/************************************************************************/
 
+;// CONCATENATED MODULE: ./src/svg/like-svgrepo-com.svg
+const like_svgrepo_com_namespaceObject = __webpack_require__.p + "img/like-svgrepo-com.svg";
+;// CONCATENATED MODULE: ./src/svg/chat-svgrepo-com.svg
+const chat_svgrepo_com_namespaceObject = __webpack_require__.p + "img/chat-svgrepo-com.svg";
+;// CONCATENATED MODULE: ./src/svg/link-svgrepo-com.svg
+const link_svgrepo_com_namespaceObject = __webpack_require__.p + "img/link-svgrepo-com.svg";
+;// CONCATENATED MODULE: ./src/svg/selection-box-on-svgrepo-com.svg
+const selection_box_on_svgrepo_com_namespaceObject = __webpack_require__.p + "img/selection-box-on-svgrepo-com.svg";
 ;// CONCATENATED MODULE: ./src/js/dnd.js
+
+
+
+
 class NotTrello {
   constructor() {
     this.addAnotherCardBtn = document.querySelector('.list-footer-text');
@@ -48,19 +70,19 @@ class NotTrello {
                         <div class="delete-btn">&times;</div>
                         <div class="task-tools">
                             <div class="task-tool">
-                                <img src="./img/like-svgrepo-com.svg" class="task-tool-img" draggable="false">
+                                <img src="${like_svgrepo_com_namespaceObject}" class="task-tool-img" draggable="false">
                                 <span class="task-tool-text">1</span>
                             </div>
                             <div class="task-tool">
-                                <img src="./img/chat-svgrepo-com.svg" class="task-tool-img" draggable="false">
+                                <img src="${chat_svgrepo_com_namespaceObject}" class="task-tool-img" draggable="false">
                                 <span class="task-tool-text">1</span>
                             </div>
                             <div class="task-tool">
-                                <img src="./img/link-svgrepo-com.svg" class="task-tool-img" draggable="false">
+                                <img src="${link_svgrepo_com_namespaceObject}" class="task-tool-img" draggable="false">
                                 <span class="task-tool-text">1</span>
                             </div>
                             <div class="task-tool">
-                                <img src="./img/selection-box-on-svgrepo-com.svg" class="task-tool-img" draggable="false">
+                                <img src="${selection_box_on_svgrepo_com_namespaceObject}" class="task-tool-img" draggable="false">
                                 <span class="task-tool-text">1</span>
                             </div>
                         </div>
@@ -182,21 +204,21 @@ class NotTrello {
                     <div class="task" draggable="true">
                             <p class="task-text">${elem}</p>
                             <div class="delete-btn">&times;</div>
-                            <div class="task-tools">
-                                <div class="task-tool">
-                                    <img src="./img/like-svgrepo-com.svg" class="task-tool-img" draggable="false">
+                                <div class="task-tools">
+                                    <div class="task-tool">
+                                    <img src="${like_svgrepo_com_namespaceObject}" class="task-tool-img" draggable="false">
                                     <span class="task-tool-text">1</span>
                                 </div>
                                 <div class="task-tool">
-                                    <img src="./img/chat-svgrepo-com.svg" class="task-tool-img" draggable="false">
+                                    <img src="${chat_svgrepo_com_namespaceObject}" class="task-tool-img" draggable="false">
                                     <span class="task-tool-text">1</span>
                                 </div>
                                 <div class="task-tool">
-                                    <img src="./img/link-svgrepo-com.svg" class="task-tool-img" draggable="false">
+                                    <img src="${link_svgrepo_com_namespaceObject}" class="task-tool-img" draggable="false">
                                     <span class="task-tool-text">1</span>
                                 </div>
                                 <div class="task-tool">
-                                    <img src="./img/selection-box-on-svgrepo-com.svg" class="task-tool-img" draggable="false">
+                                    <img src="${selection_box_on_svgrepo_com_namespaceObject}" class="task-tool-img" draggable="false">
                                     <span class="task-tool-text">1</span>
                                 </div>
                             </div>
