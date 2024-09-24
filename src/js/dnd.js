@@ -1,3 +1,8 @@
+import like from "../svg/like-svgrepo-com.svg"
+import chat from "../svg/chat-svgrepo-com.svg"
+import link from "../svg/link-svgrepo-com.svg"
+import checked from "../svg/selection-box-on-svgrepo-com.svg"
+
 export default class NotTrello {
     constructor() {
         this.addAnotherCardBtn = document.querySelector('.list-footer-text')
@@ -46,19 +51,19 @@ export default class NotTrello {
                         <div class="delete-btn">&times;</div>
                         <div class="task-tools">
                             <div class="task-tool">
-                                <img src="./img/like-svgrepo-com.svg" class="task-tool-img" draggable="false">
+                                <img src="${like}" class="task-tool-img" draggable="false">
                                 <span class="task-tool-text">1</span>
                             </div>
                             <div class="task-tool">
-                                <img src="./img/chat-svgrepo-com.svg" class="task-tool-img" draggable="false">
+                                <img src="${chat}" class="task-tool-img" draggable="false">
                                 <span class="task-tool-text">1</span>
                             </div>
                             <div class="task-tool">
-                                <img src="./img/link-svgrepo-com.svg" class="task-tool-img" draggable="false">
+                                <img src="${link}" class="task-tool-img" draggable="false">
                                 <span class="task-tool-text">1</span>
                             </div>
                             <div class="task-tool">
-                                <img src="./img/selection-box-on-svgrepo-com.svg" class="task-tool-img" draggable="false">
+                                <img src="${checked}" class="task-tool-img" draggable="false">
                                 <span class="task-tool-text">1</span>
                             </div>
                         </div>
@@ -188,21 +193,21 @@ export default class NotTrello {
                     <div class="task" draggable="true">
                             <p class="task-text">${elem}</p>
                             <div class="delete-btn">&times;</div>
-                            <div class="task-tools">
-                                <div class="task-tool">
-                                    <img src="./img/like-svgrepo-com.svg" class="task-tool-img" draggable="false">
+                                <div class="task-tools">
+                                    <div class="task-tool">
+                                    <img src="${like}" class="task-tool-img" draggable="false">
                                     <span class="task-tool-text">1</span>
                                 </div>
                                 <div class="task-tool">
-                                    <img src="./img/chat-svgrepo-com.svg" class="task-tool-img" draggable="false">
+                                    <img src="${chat}" class="task-tool-img" draggable="false">
                                     <span class="task-tool-text">1</span>
                                 </div>
                                 <div class="task-tool">
-                                    <img src="./img/link-svgrepo-com.svg" class="task-tool-img" draggable="false">
+                                    <img src="${link}" class="task-tool-img" draggable="false">
                                     <span class="task-tool-text">1</span>
                                 </div>
                                 <div class="task-tool">
-                                    <img src="./img/selection-box-on-svgrepo-com.svg" class="task-tool-img" draggable="false">
+                                    <img src="${checked}" class="task-tool-img" draggable="false">
                                     <span class="task-tool-text">1</span>
                                 </div>
                             </div>

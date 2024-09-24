@@ -12,7 +12,8 @@ html {
 }
 
 body {
-    width: 100%;
+    width: 1000px;
+    margin: 0 auto;
     height: 100vh;
     background: #FC5C7D;
     background: -webkit-linear-gradient(to right, #6A82FB, #FC5C7D);  
@@ -46,7 +47,7 @@ body {
 
 .list-header-text {
     text-transform: uppercase;
-    font-size: 1.2rem;
+    font-size: 2rem;
     color:rgb(36, 90, 251);
     font-weight: 700;
 }
@@ -57,13 +58,13 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    width: 12px;
-    height: 12px;
+    width: 2rem;
+    height: 2rem;
     cursor: pointer;
 }
 
 .task {
-    font-size: 0.5rem;
+    font-size: 1rem;
     padding: 5px;
     margin-bottom: 5px;
     border: 1px solid #000000;
@@ -89,15 +90,15 @@ body {
 }
 
 .task-tool-img {
-    width: 0.7rem;
-    height: 0.7rem;
+    width: 1.4rem;
+    height: 1.4rem;
     margin-right: 2px;
     cursor: pointer;
 }
 
 .list-footer-text {
     margin-top: 5px;
-    font-size: 0.7rem;
+    font-size: 1.4rem;
     color:rgb(36, 90, 251);
     font-weight: 400;
     cursor: pointer;
@@ -111,7 +112,7 @@ body {
 .new-card-text {
     width: 100%;
     padding: 5px;
-    font-size: 0.5rem;
+    font-size: 1rem;
 }
 
 .new-card-options {
@@ -120,7 +121,7 @@ body {
 }
 
 .add-new-card-btn {
-    font-size: 0.6rem;
+    font-size: 1.2rem;
     margin-right: 5px;
     padding: 3px;
     background-color: rgb(60, 219, 81);
@@ -132,14 +133,14 @@ body {
 }
 
 .cancel-new-card-btn {
-    font-size: 0.7rem;
+    font-size: 1.4rem;
     align-self: center;
     cursor: pointer;
     font-weight: 700;
 }
 
 .new-card-error-text {
-    font-size: 0.6rem;
+    font-size: 1.2rem;
     color: #ff0000;
     vertical-align: middle;
     font-weight: 700;
@@ -154,12 +155,12 @@ body {
 .empty-list {
     width: 100%;
     text-align: center;
-    font-size: 0.7rem;    
+    font-size: 1.4rem;    
 }
 
 .delete-btn {
     position: absolute;
-    font-size: 1rem;
+    font-size: 2rem;
     top: 0;
     right: 5px;
     display: none;
