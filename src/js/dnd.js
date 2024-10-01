@@ -46,24 +46,24 @@ export default class NotTrello {
                         ev.target.closest('div').previousElementSibling.querySelector('.empty-list').remove()
                     }
                     ev.target.closest('div').previousElementSibling.insertAdjacentHTML('beforeend', `
-                        <div class="task" draggable="true">
+                        <div class="task">
                         <p class="task-text">${e.target.closest('div.add-new-card-block').querySelector('input').value}</p>
                         <div class="delete-btn">&times;</div>
                         <div class="task-tools">
                             <div class="task-tool">
-                                <img src="${like}" class="task-tool-img" draggable="false">
+                                <img src="${like}" class="task-tool-img">
                                 <span class="task-tool-text">1</span>
                             </div>
                             <div class="task-tool">
-                                <img src="${chat}" class="task-tool-img" draggable="false">
+                                <img src="${chat}" class="task-tool-img">
                                 <span class="task-tool-text">1</span>
                             </div>
                             <div class="task-tool">
-                                <img src="${link}" class="task-tool-img" draggable="false">
+                                <img src="${link}" class="task-tool-img">
                                 <span class="task-tool-text">1</span>
                             </div>
                             <div class="task-tool">
-                                <img src="${checked}" class="task-tool-img" draggable="false">
+                                <img src="${checked}" class="task-tool-img">
                                 <span class="task-tool-text">1</span>
                             </div>
                         </div>
@@ -80,54 +80,83 @@ export default class NotTrello {
     };
 
     dragTask() {
- 
-            document.querySelector('.tasks-list').addEventListener(`dragstart`, (evt) => {
-                evt.target.classList.add(`selected`);
-                this.clicked = evt.target;
-                this.currentBlock = this.clicked.closest('div.list-body');
-                document.querySelectorAll('.empty-list').forEach(el => el.draggable = true)
-            })
-            
-            document.querySelector('.tasks-list').addEventListener(`dragend`, (evt) => {
-                evt.target.classList.remove(`selected`);
-                this.clicked.style.opacity = 1;
-            });
+        document.querySelector('.tasks-list').addEventListener(`mousedown`, (evt) => {
+            if (evt.target.closest('.task')) {
+                if (evt.target.classList.contains('delete-btn')) {
+                    return
+                }
+                const current = evt.target.closest('.task')
+                let cloneCurr = current.cloneNode(true)
+                cloneCurr.ondragstart = function() {
+                    return false;
+                };
 
-            document.querySelector('.tasks-list').addEventListener('dragover', (ev) => {
-                ev.preventDefault();
-                if ([...document.querySelectorAll('.list-body')].find(elem => elem.querySelectorAll('.task').length == 0)) {
-                    document.querySelectorAll('.list-body').forEach(elem => {
-                        if (elem.querySelectorAll('.task').length == 0 && !elem.querySelector('.empty-list')) {
-                            elem.insertAdjacentHTML('afterbegin', `
-                                <div class="empty-list">
-                                    <span>No task...</span>
-                                </div>
-                                `)
+                let shiftX = evt.clientX - current.getBoundingClientRect().left;
+                let shiftY = evt.clientY - current.getBoundingClientRect().top;
+
+                cloneCurr.style.position = "absolute";
+                cloneCurr.style.zIndex = 1000;
+                document.body.append(cloneCurr)
+                moveAt(evt.pageX, evt.pageY);
+
+                function moveAt(pageX, pageY) {
+                cloneCurr.style.left = pageX - shiftX + 'px';
+                cloneCurr.style.top = pageY - shiftY + 'px';
+                }
+
+                function onMouseMove(event) {
+                    event.preventDefault()
+                    document.body.style.cursor = 'grabbing'
+                    moveAt(event.pageX, event.pageY);
+                    if ([...document.querySelectorAll('.list-body')].find(elem => elem.querySelectorAll('.task').length == 0)) {
+                        document.querySelectorAll('.list-body').forEach(elem => {
+                            if (elem.querySelectorAll('.task').length == 0 && !elem.querySelector('.empty-list')) {
+                                elem.insertAdjacentHTML('afterbegin', `
+                                    <div class="empty-list">
+                                        <span>No task...</span>
+                                    </div>
+                                    `)
+                            }
+                        })
+                    }
+                    cloneCurr.hidden = true
+                    const allList = document.elementFromPoint(event.clientX, event.clientY).closest('div.list-body')
+                    if (allList != null) {
+                        let currentt = document.elementFromPoint(event.clientX, event.clientY).closest('div');
+                        if (currentt.classList.contains(`task`) || currentt.classList.contains(`empty-list`)) {
+                            current.style.opacity = 0.1;
+                            current.style.backgroundColor = '#000000';
+                            const isMoveable = cloneCurr !== currentt && (currentt.classList.contains(`task`) || currentt.classList.contains(`empty-list`));
+                            if (!isMoveable) {
+                                return;
+                            }
+                            if (allList.querySelector('.empty-list')) {
+                                allList.querySelector('.empty-list').remove()
+                                allList.append(current)
+                                return
+                            } else {
+                                allList.insertBefore(current, currentt);
+                            }
                         }
-                    })
-                }
-                const allList = ev.target.closest('div.list-body');
-                if (allList != null) {
-                    const current = ev.target;
-                    this.clicked.style.opacity = 0;
-                    const isMoveable = this.clicked !== current && (current.classList.contains(`task`) || current.classList.contains(`empty-list`));
-                    if (!isMoveable) {
-                        return;
-                    }
-                    let nextElement;
-                    if (allList.querySelector('.empty-list')) {
-                        nextElement = this.clicked
-                        allList.querySelector('.empty-list').remove()
-                        allList.append(this.clicked)
-                        return
-                    } else {
-                        nextElement = (current === this.clicked.nextElementSibling) ? current.nextElementSibling : current;
-                        allList.insertBefore(this.clicked, nextElement);
-                    }
 
+                    }
+                    cloneCurr.hidden = false
                 }
-            })
-    };
+
+                document.addEventListener('mousemove', onMouseMove);
+
+                cloneCurr.onmouseup = function() {
+                    current.style.opacity = '';
+                        current.style.backgroundColor = '';
+                    document.removeEventListener('mousemove', onMouseMove);
+                    cloneCurr.onmouseup = null;
+                    cloneCurr.remove()
+                    document.body.style.cursor = ''
+                };
+            }
+
+        })
+};
 
     deleteTask() {
         const deleteFunc = (ev) => {
@@ -196,24 +225,24 @@ export default class NotTrello {
             }
             data[key].forEach(elem => {
                 task.querySelector('.list-body').insertAdjacentHTML('beforeend', `
-                    <div class="task" draggable="true">
+                    <div class="task">
                             <p class="task-text">${elem}</p>
                             <div class="delete-btn">&times;</div>
                                 <div class="task-tools">
                                     <div class="task-tool">
-                                    <img src="${like}" class="task-tool-img" draggable="false">
+                                    <img src="${like}" class="task-tool-img">
                                     <span class="task-tool-text">1</span>
                                 </div>
                                 <div class="task-tool">
-                                    <img src="${chat}" class="task-tool-img" draggable="false">
+                                    <img src="${chat}" class="task-tool-img">
                                     <span class="task-tool-text">1</span>
                                 </div>
                                 <div class="task-tool">
-                                    <img src="${link}" class="task-tool-img" draggable="false">
+                                    <img src="${link}" class="task-tool-img">
                                     <span class="task-tool-text">1</span>
                                 </div>
                                 <div class="task-tool">
-                                    <img src="${checked}" class="task-tool-img" draggable="false">
+                                    <img src="${checked}" class="task-tool-img">
                                     <span class="task-tool-text">1</span>
                                 </div>
                             </div>

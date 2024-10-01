@@ -71,6 +71,7 @@ body {
     border-radius: 3px;
     background-color: #ffffff;
     position: relative;
+    width: 310px;
 }
 
 .task-tools {
